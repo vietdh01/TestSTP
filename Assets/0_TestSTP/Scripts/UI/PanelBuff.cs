@@ -69,7 +69,7 @@ namespace TestSTP.UI
         private void OnBtnLogoutClicked()
         {
             Hide();
-            SceneManager.LoadScene("LoginScene");
+            SceneManager.LoadScene("LoginScene", LoadSceneMode.Single);
         }
     }
 }
