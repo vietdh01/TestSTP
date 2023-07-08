@@ -41,7 +41,7 @@ namespace TestSTP
             {
                 loginData = dataRes;
                 ClientAPI.SetAccessToken(dataRes.accessToken);
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene("Main",LoadSceneMode.Single);
             }
             else
             {
