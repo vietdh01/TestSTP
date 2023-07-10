@@ -63,6 +63,7 @@ namespace TestSTP.UI
 
         private void OnLoginClick()
         {
+            if (CheckBanEmail()) return;
             var email = inputEmail.text;
             PlayerPrefs.SetString("SAVE_EMAIL", email);
             var pass = inputPassword.text;
@@ -82,6 +83,12 @@ namespace TestSTP.UI
                 txtEmailValidate.text = "Incorrect email";
             }
 
+            CheckBanEmail();
+        }
+
+        public bool CheckBanEmail()
+        {
+            var email = inputEmail.text;
             if (dictBan.ContainsKey(email))
             {
                 btnLogin.interactable = false;
@@ -101,13 +108,18 @@ namespace TestSTP.UI
                             txtWarning.text = "";
                         });
                     }
+
+                    return true;
                 }
                 else
                 {
                     dictBan.Remove(email);
                     SaveBanDict();
+                    return false;
                 }
             }
+
+            return false;
         }
 
         private void OnResponseError(int code, string msg)
